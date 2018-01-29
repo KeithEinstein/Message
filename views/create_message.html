@@ -2,20 +2,20 @@
 <html>
     <head>
         <meta charset=“UTF-8”>
-        <title>Messages</title>
+        <title>Create Message</title>
         <link rel=“stylesheet” href=“style.css”>
     </head>
     <body>
-        <nav>
-            <a href="/messages">Messages</a>
             <a href="/contacts">Contacts</a>
             <a href="/users/login">Login</a>
         </nav>
         <form action = "/messages" method="POST">
-            <label for="phone_number">Phone Number</label><br>
-            <input id="phone_number" type="text" name="phone_number"><br>
+            {{#contactData}}
+            <h1>{{name}}</h1>
+            <input id="phone_number" type="hidden" name="phone_number" value="{{phone_number}}"><br>
             <label for="body">Message</label><br>
             <textarea rows="4" cols="50" name="body" placeholder="Hey Friend!"></textarea><br>
+            {{/contactData}}
             <input type="submit" value="Send Message">
       </form>
         </form>

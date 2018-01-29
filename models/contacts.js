@@ -18,7 +18,8 @@ contacts.allContacts = (req, res, next) => {
 };
 
 contacts.findById = (req, res, next) => {
-    const id = req.params.contactId;
+    console.log(req.body.contact);
+    const id = 5;
     db
         .one("SELECT * FROM contacts WHERE contacts.id = ${id}", { id: id })
         .then(data => {

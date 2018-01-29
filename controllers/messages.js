@@ -12,4 +12,8 @@ router.post("/", messages.sendMessage, (req, res, next) => {
     res.json({ id: res.locals.newMessageId, body: req.body });
 });
 
+router.get("/", (req, res, next) => {
+    res.render("./messages");
+});
+
 module.exports = router;

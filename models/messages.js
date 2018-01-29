@@ -19,19 +19,19 @@ messages.sendMessage = (req, res, next) => {
             from: "+19172596360"
         })
         .then(message => console.log(message.sid));
-    db
-        .one(
-            "INSERT INTO messages (body, user_id, contact_id) VALUES ($1, $2, $3) RETURNING id;",
-            [req.body.body, req.body.user_id, req.body.contact_id]
-        )
-        .then(message => {
-            res.locals.newMessageId = message.id;
-            next();
-        })
-        .catch(error => {
-            console.log("error encountered in contacts.create. Error:", error);
-            next(error);
-        });
+    // db
+    //     .one(
+    //         "INSERT INTO messages (body, user_id, contact_id) VALUES ($1, $2, $3) RETURNING id;",
+    //         [req.body.body, req.body.user_id, req.body.contact_id]
+    //     )
+    //     .then(message => {
+    //         res.locals.newMessageId = message.id;
+    //         next();
+    //     })
+    //     .catch(error => {
+    //         console.log("error encountered in contacts.create. Error:", error);
+    //         next(error);
+    //     });
 };
 
 // Retrieve a message
