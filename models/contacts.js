@@ -35,6 +35,12 @@ contacts.findById = (req, res, next) => {
 };
 
 contacts.create = (req, res, next) => {
+    client.validationRequests
+        .create({
+            friendlyName: req.body.name,
+            phoneNumber: req.body.phone_number
+        })
+        .then(data => console.log(data.validationCode));
     db
         .one(
             "INSERT INTO contacts (name, phone_number) VALUES ($1, $2) RETURNING id;",

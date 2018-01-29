@@ -1,28 +1,15 @@
 const router = require("express").Router();
 const messages = require("../models/messages.js");
 
-// router.get("/", beers.allBeers, (req, res, next) => {
-//     res.render("beers", { beersData: res.locals.allBeersData });
-// });
+const accountSid = "AC63270d9afa3216271fa93800491027a0";
+const authToken = "e53e7238ca4701d1db2baba163e438fc";
+var Twilio = require("twilio").Twilio;
 
-// router.get("/:beerId", beers.findById, (req, res, next) => {
-//     res.render("beer", res.locals.beerData);
-// });
+var client = new Twilio(accountSid, authToken);
+var service = client.chat.services("IS9664fdefec8a43cfa00d58640bbc4a1b");
 
-router.post("/", client.messages, (req, res, next) => {
-    res.json({ id: res.locals.newBeerId, body: req.body });
+router.post("/", messages.sendMessage, (req, res, next) => {
+    res.json({ id: res.locals.newMessageId, body: req.body });
 });
-
-// router.delete("/:beerId", beers.destroy, (req, res, next) => {
-//     res.json({ id: req.params.beerId });
-// });
-
-// router.put("/:beerId", beers.update, (req, res, next) => {
-//     res.json(res.locals.updatedBeerData);
-// });
-
-// router.get("/:beerId/edit", beers.findById, (req, res, next) => {
-//     res.render("beer-edit", res.locals.beerData);
-// });
 
 module.exports = router;

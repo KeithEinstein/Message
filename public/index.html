@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=“UTF-8”>
+        <title>Messages</title>
+        <link rel=“stylesheet” href=“style.css”>
+    </head>
+    <body>
+        <form action="/messages" method="POST">
+            <label for="phone_number">Phone Number</label><br>
+            <input id="phone_number" type="text" name="messages[phone_number]"><br>
+            <label for="body">Message</label><br>
+            <textarea rows="4" cols="50" name="body" placeholder="Hey Friend!"></textarea><br>
+            <input type="submit" value="Send Message">
+        </form>
+            <script src=“main.js”></script>
+            <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+            <script src="https://media.twiliocdn.com/sdk/js/chat/v2.0/twilio-chat.min.js"></script>
+    </body>
+</html>

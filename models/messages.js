@@ -3,103 +3,54 @@ const messages = {};
 
 const accountSid = "AC63270d9afa3216271fa93800491027a0";
 const authToken = "e53e7238ca4701d1db2baba163e438fc";
-const client = require("twilio")(accountSid, authToken);
+var Twilio = require("twilio").Twilio;
 
-client.messages
-    .create({
-        body: "Let's grab lunch at Milliways tomorrow!",
-        to: "+16314337404",
-        from: "+14158141829",
-        mediaUrl: "http://www.example.com/cheeseburger.png"
-    })
-    .then(message => console.log(message.sid));
-// .then(
-//     message => process.stdout.write(message.sid));
-//     res.locals.messageData = message;
-//     );
+var client = new Twilio(accountSid, authToken);
+var service = client.chat.services("IS9664fdefec8a43cfa00d58640bbc4a1b");
 
-// messages.allMessages = (req, res, next) => {
-//     db
-//         .manyOrNone("SELECT * FROM beers")
-//         .then(data => {
-//             res.locals.allBeersData = data;
-//             next();
-//         })
-//         .catch(error => {
-//             console.log("error encountered in beers.allBeers. Error:", error);
-//             next(error);
-//         });
-// };
+// List all messages in channel
 
-// beers.findById = (req, res, next) => {
-//     const id = req.params.beerId;
-//     db
-//         .one("SELECT * FROM beers WHERE beers.id = ${id}", { id: id })
-//         .then(data => {
-//             res.locals.beerData = data;
-//             next();
-//         })
-//         .catch(error => {
-//             console.log("error encountered in beers.findById. Error:", error);
-//             next(error);
-//         });
-// };
+// Create new message in channel
+messages.sendMessage = (req, res, next) => {
+    client.messages
+        .create({
+            body: req.body.body,
+            to: req.body.phone_number,
+            from: "+19172596360"
+        })
+        .then(message => console.log(message.sid));
+    db
+        .one(
+            "INSERT INTO messages (body, user_id, contact_id) VALUES ($1, $2, $3) RETURNING id;",
+            [req.body.body, req.body.user_id, req.body.contact_id]
+        )
+        .then(message => {
+            res.locals.newMessageId = message.id;
+            next();
+        })
+        .catch(error => {
+            console.log("error encountered in contacts.create. Error:", error);
+            next(error);
+        });
+};
 
-// beers.create = (req, res, next) => {
-//     db
-//         .one(
-//             "INSERT INTO beers (name, category, country, alcohol, price) VALUES ($1, $2, $3, $4, $5) RETURNING id;",
-//             [
-//                 req.body.name,
-//                 req.body.category,
-//                 req.body.country,
-//                 req.body.alcohol,
-//                 req.body.price
-//             ]
-//         )
-//         .then(data => {
-//             res.locals.newBeerId = data.id;
-//             next();
-//         })
-//         .catch(error => {
-//             console.log("error encountered in beers.create. Error:", error);
-//             next(error);
-//         });
-// };
+// Retrieve a message
 
-// beers.destroy = (req, res, next) => {
-//     db
-//         .none("DELETE FROM beers WHERE id = $1", [req.params.beerId])
-//         .then(() => {
-//             next();
-//         })
-//         .catch(error => {
-//             console.log("error encountered in beers.destroy. error:", error);
-//             next(error);
-//         });
-// };
-
-// beers.update = (req, res, next) => {
-//     db
-//         .one(
-//             "UPDATE beers SET name = $1, category = $2, country = $3, alcohol = $4, price = $5 WHERE id = $6 RETURNING *;",
-//             [
-//                 req.body.name,
-//                 req.body.category,
-//                 req.body.country,
-//                 req.body.alcohol,
-//                 req.body.price,
-//                 req.params.beerId
-//             ]
-//         )
-//         .then(data => {
-//             res.locals.updatedBeerData = data;
-//             next();
-//         })
-//         .catch(error => {
-//             console.log("error encountered in beers.update. Error:", error);
-//             next(error);
-//         });
-// };
+messages.retrieveMessage = (req, res, next) => {
+    const id = req.params.messageId;
+    db
+        .one("SELECT * FROM messages WHERE message.id = ${id}", { id: id })
+        .then(data => {
+            res.locals.messageData = data;
+            next();
+        })
+        .catch(error => {
+            console.log(
+                "error encountered in messages.findById. Error:",
+                error
+            );
+            next(error);
+        });
+};
 
 module.exports = messages;
