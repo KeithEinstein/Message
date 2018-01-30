@@ -17,11 +17,11 @@
                 <div class="contact-info">
                     <a id="contact_name" href="/contacts/create_message?contact={{id}}">{{name}}</a>  
                     <a id="contact_number" href="/contacts/create_message?contact={{id}}">{{phone_number}}</a>
-                    <input type="hidden" name="contact" value={{id}}>
+                    <input type="hidden" id="id" name="contact" value={{id}}>
                 </div>
                 <div class="contact_buttons">
-                    <button class="edit_button" action="/edit_contact" method="GET">Edit</button>
-                    <button class="delete_button" action="/contacts/delete" method="DELETE">Delete</button>
+                    <a href="contacts/edit_contact?contact={{id}}" class="edit_button">Edit</a>
+                    <a href="#" id="delete" class="delete_button">Delete</a>
                 </div>
             </div>
             <hr>
@@ -30,7 +30,11 @@
         <div class="add_contact_button_container">
         <a class="add_contact_button" href="/contacts/new">Add Contact</a>
         <div>
-            <!-- <script src=“main.js”></script> -->
+            <script
+              src="http://code.jquery.com/jquery-3.3.1.min.js"
+              integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+              crossorigin="anonymous"></script>
+            <script src="main.js"></script>
             <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
             <script src="https://media.twiliocdn.com/sdk/js/chat/v2.0/twilio-chat.min.js"></script>
     </body>

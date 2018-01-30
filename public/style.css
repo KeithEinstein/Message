@@ -118,6 +118,7 @@
 
 .contact_buttons {
     display: block;
+    margin: 20px 0px 15px 0px;
 }
 
 .delete_button {
@@ -132,6 +133,8 @@
     display: inline;
     margin: 10px auto;
     border-color: #5539f1;
+    text-decoration: none;
+    font-family: avenir;
 }
 
 .send_button {
@@ -161,6 +164,8 @@
     display: inline;
     margin: 10px auto;
     border-color: #5183e9;
+    text-decoration: none;
+    font-family: avenir;
 }
 
 .contact_name_header {
@@ -171,7 +176,8 @@
     position: absolute;
     font-size: 17px;
     height: 75px;
-    right: 200px;
+    right: 215px;
+    font-weight: 300;
 }
 
 .create_message_container {
@@ -182,14 +188,42 @@
     width: 500px;
 }
 
+.stack_overflow {
+    position: fixed;
+    width: 500px;
+    height: 200px;
+    margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
+    left: 0;
+    right: 0;
+}
+
+.create_message_container_2 {
+    position: fixed;
+    bottom: 30px;
+    margin: 0% auto;
+    left: 0;
+    right: 0;
+    width: 500px;
+}
+
+#wrapper {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 350px;
+    background-color: #ffffff;
+}
+
 .textarea {
     border-radius: 2px;
     border: solid 1px #bbbbbb;
     height: 150px;
     font-size: 14px;
+    width: 500px;
 }
 
 .message_container {
+    margin: 100px 0px 400px 500px;
 }
 
 .message_bubble {
@@ -207,7 +241,7 @@
 hr {
     width: 100%;
     border: solid #ffffff 0.5px;
-    margin: 5px 0px 20px 0px;
+    margin: 0px 0px 25px 0px;
 }
 
 .add_contact_button {

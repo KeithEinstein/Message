@@ -10,27 +10,34 @@
             <a class="nav-links" href="/messages">Messages</a>
             <a class="nav-links" href="/contacts">Contacts</a>
             <a class="nav-links" href="/users/login">Login</a>
+            <div class="contact_name_header">
+                {{#contactData}}
+                <h1>{{name}}</h1>
+                {{/contactData}}
+            </div>
         </nav>
-        <div>
+        <div class="message_container">
             {{#messageData}}
                 <div class="message_bubble">
                     {{body}}
                 </div>
             {{/messageData}}
         </div>
-        <div>
-            <form action = "/messages" method="POST">
-                {{#contactData}}
-                <input id="phone_number" type="hidden" name="phone_number" value="{{phone_number}}">
-                <input id="user_id" type="hidden" name="user_id" value="1">
-                <input id="contact_id" type="hidden" name="contact_id" value="{{id}}">
-                {{/contactData}}
-                <textarea rows="4" cols="50" name="body" placeholder="Hey Friend!"></textarea>
-                <input type="submit" value="Send Message">
-            </form>
+        <div> 
+            <div id="wrapper">
+                <form class="create_message_container_2" action = "/messages" method="POST">
+                    {{#contactData}}
+                    <input id="phone_number" type="hidden" name="phone_number" value="{{phone_number}}">
+                    <input id="user_id" type="hidden" name="user_id" value="1">
+                    <input id="contact_id" type="hidden" name="contact_id" value="{{id}}">
+                    {{/contactData}}                                       
+                    <textarea class="textarea" rows="4" cols="50" name="body" placeholder="Hey Friend!"></textarea>
+                    <input class="button" type="submit" value="Send">
+                </form>
+            </div>
         </div>
         </form>
-        <script src=“main.js”></script>
+        <script src="main.js"></script>
         <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
 <script src="https://media.twiliocdn.com/sdk/js/chat/v2.0/twilio-chat.min.js"></script>
     </body>

@@ -58,7 +58,7 @@ contacts.create = (req, res, next) => {
 
 contacts.destroy = (req, res, next) => {
     db
-        .none("DELETE FROM contacts WHERE id = $1", [req.params.contactId])
+        .none("DELETE FROM contacts WHERE id = $1", [req.body.id])
         .then(() => {
             next();
         })
@@ -72,7 +72,7 @@ contacts.update = (req, res, next) => {
     db
         .one(
             "UPDATE contacts SET name = $1, phone_number = $2 WHERE id = $3 RETURNING *;",
-            [req.body.name, req.body.phone_number]
+            [req.body.name, req.body.phone_number, req.body.id]
         )
         .then(data => {
             res.locals.updatedContactData = data;

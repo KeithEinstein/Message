@@ -29,12 +29,13 @@ router.get("/edit_contact", contacts.findById, (req, res, next) => {
     res.render("edit_contact", { contactData: res.locals.contactData });
 });
 
-router.put("/:contact={{id}}", contacts.update, (req, res, next) => {
+router.put("/update", contacts.update, (req, res, next) => {
+    // res.redirect("contacts", { contactsData: res.locals.allContactsData });
     res.json(res.locals.updatedContactData);
 });
 
 router.delete("/delete", contacts.destroy, (req, res, next) => {
-    res.redirect("/");
+    res.render("contacts");
 });
 
 module.exports = router;

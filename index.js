@@ -27,9 +27,6 @@ app.use("/users", usersRouter);
 const contactsRouter = require("./controllers/contacts.js");
 app.use("/contacts", contactsRouter);
 
-// const channelsRouter = require("./controllers/channels.js");
-// app.use("/channels", channelsRouter);
-
 const messagesRouter = require("./controllers/messages.js");
 app.use("/messages", messagesRouter);
 
