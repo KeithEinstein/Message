@@ -19,38 +19,47 @@ messages.sendMessage = (req, res, next) => {
             from: "+19172596360"
         })
         .then(message => console.log(message.sid));
-    // db
-    //     .one(
-    //         "INSERT INTO messages (body, user_id, contact_id) VALUES ($1, $2, $3) RETURNING id;",
-    //         [req.body.body, req.body.user_id, req.body.contact_id]
-    //     )
-    //     .then(message => {
-    //         res.locals.newMessageId = message.id;
-    //         next();
-    //     })
-    //     .catch(error => {
-    //         console.log("error encountered in contacts.create. Error:", error);
-    //         next(error);
-    //     });
+    db
+        .one(
+            "INSERT INTO messages (body, user_id, contact_id) VALUES ($1, $2, $3) RETURNING id;",
+            [req.body.body, req.body.user_id, req.body.contact_id]
+        )
+        .then(message => {
+            res.locals.newMessageId = message.id;
+            next();
+        })
+        .catch(error => {
+            console.log("error encountered in contacts.create. Error:", error);
+            next(error);
+        });
 };
 
 // Retrieve a message
 
 messages.retrieveMessage = (req, res, next) => {
-    const id = req.params.messageId;
+    const id = req.body.contact_id;
     db
-        .one("SELECT * FROM messages WHERE message.id = ${id}", { id: id })
+        .manyOrNone(
+            "SELECT * FROM messages WHERE messages.contact_id = ${id}",
+            {
+                id: id
+            }
+        )
         .then(data => {
             res.locals.messageData = data;
             next();
         })
         .catch(error => {
             console.log(
-                "error encountered in messages.findById. Error:",
+                "error encountered in messages.retrieveMessage. Error:",
                 error
             );
             next(error);
         });
 };
+
+// messages.retrieveMessage = (req, res, next) => {
+//     const
+// }
 
 module.exports = messages;

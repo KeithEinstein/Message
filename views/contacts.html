@@ -3,27 +3,33 @@
     <head>
         <meta charset=“UTF-8”>
         <title>Contacts</title>
-        <link rel=“stylesheet” href=“style.css”>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <nav>
-            <a href="/messages">Messages</a>
-            <a href="/contacts">Contacts</a>
-            <a href="/users/login">Login</a>
+        <nav class="nav">
+            <a class="nav-links" href="/messages">Messages</a>
+            <a class="nav-links" href="/contacts">Contacts</a>
+            <a class="nav-links" href="/users/login">Login</a>
         </nav>
-        <div class="main-container">
-        <div class="border-container">
-        <form action="/contacts/create_message" method="GET">
+        <div class="contacts_container">
             {{#contactsData}}
-            <input type="radio" name="contact" value={{id}}> {{name}}
-            {{phone_number}}
-            <button action="/contacts/delete" method="DELETE">Delete</button><br>
+            <div class="contact-list-item"> 
+                <div class="contact-info">
+                    <a id="contact_name" href="/contacts/create_message?contact={{id}}">{{name}}</a>  
+                    <a id="contact_number" href="/contacts/create_message?contact={{id}}">{{phone_number}}</a>
+                    <input type="hidden" name="contact" value={{id}}>
+                </div>
+                <div class="contact_buttons">
+                    <button class="edit_button" action="/edit_contact" method="GET">Edit</button>
+                    <button class="delete_button" action="/contacts/delete" method="DELETE">Delete</button>
+                </div>
+            </div>
+            <hr>
             {{/contactsData}}
-        <input type="submit" value="Chat">
-        </form>
         </div>
-        </div>
-        <a href="/contacts/new">Add Contact</a>
+        <div class="add_contact_button_container">
+        <a class="add_contact_button" href="/contacts/new">Add Contact</a>
+        <div>
             <!-- <script src=“main.js”></script> -->
             <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
             <script src="https://media.twiliocdn.com/sdk/js/chat/v2.0/twilio-chat.min.js"></script>

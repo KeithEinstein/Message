@@ -3,21 +3,32 @@
     <head>
         <meta charset=“UTF-8”>
         <title>Messages</title>
-        <link rel=“stylesheet” href=“style.css”>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <nav>
-            <a href="/messages">Messages</a>
-            <a href="/contacts">Contacts</a>
-            <a href="/users/login">Login</a>
+        <nav class="nav">
+            <a class="nav-links" href="/messages">Messages</a>
+            <a class="nav-links" href="/contacts">Contacts</a>
+            <a class="nav-links" href="/users/login">Login</a>
         </nav>
-        <form action = "/messages" method="POST">
-            <label for="phone_number">Phone Number</label><br>
-            <input id="phone_number" type="text" name="phone_number"><br>
-            <label for="body">Message</label><br>
-            <textarea rows="4" cols="50" name="body" placeholder="Hey Friend!"></textarea><br>
-            <input type="submit" value="Send Message">
-      </form>
+        <div>
+            {{#messageData}}
+                <div class="message_bubble">
+                    {{body}}
+                </div>
+            {{/messageData}}
+        </div>
+        <div>
+            <form action = "/messages" method="POST">
+                {{#contactData}}
+                <input id="phone_number" type="hidden" name="phone_number" value="{{phone_number}}">
+                <input id="user_id" type="hidden" name="user_id" value="1">
+                <input id="contact_id" type="hidden" name="contact_id" value="{{id}}">
+                {{/contactData}}
+                <textarea rows="4" cols="50" name="body" placeholder="Hey Friend!"></textarea>
+                <input type="submit" value="Send Message">
+            </form>
+        </div>
         </form>
         <script src=“main.js”></script>
         <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>

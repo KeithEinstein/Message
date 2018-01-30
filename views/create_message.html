@@ -3,20 +3,24 @@
     <head>
         <meta charset=“UTF-8”>
         <title>Create Message</title>
-        <link rel=“stylesheet” href=“style.css”>
+        <link rel="stylesheet" type="text/css" href="/style.css">
     </head>
     <body>
-            <a href="/contacts">Contacts</a>
-            <a href="/users/login">Login</a>
+        <nav class="nav">
+            <a class="nav-links" href="/contacts">Contacts</a>
+            <a class="nav-links" href="/users/login">Login</a>
+            <div class="contact_name_header">
+                {{#contactData}}
+                <h1>{{name}}</h1>
+            </div>
         </nav>
-        <form action = "/messages" method="POST">
-            {{#contactData}}
-            <h1>{{name}}</h1>
-            <input id="phone_number" type="hidden" name="phone_number" value="{{phone_number}}"><br>
-            <label for="body">Message</label><br>
-            <textarea rows="4" cols="50" name="body" placeholder="Hey Friend!"></textarea><br>
+        <form class="create_message_container" action = "/messages" method="POST">
+            <input id="phone_number" type="hidden" name="phone_number" value="{{phone_number}}">
+            <input id="user_id" type="hidden" name="user_id" value="1">
+            <input id="contact_id" type="hidden" name="contact_id" value="{{id}}"><br>
+            <textarea class="textarea" rows="4" cols="50" name="body" placeholder="Hey Friend!"></textarea><br>
             {{/contactData}}
-            <input type="submit" value="Send Message">
+            <input class ="send_button" type="submit" value="Send">
       </form>
         </form>
         <script src=“main.js”></script>

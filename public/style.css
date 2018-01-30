@@ -1,0 +1,231 @@
+.nav {
+    position: fixed;
+    background: linear-gradient(to right, #4c28cf, #5183e9);
+    min-height: 75px;
+    display: flex;
+    font-family: avenir;
+    justify-content: flex-end;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.nav-links {
+    text-align: center;
+    font-size: 18px;
+    text-decoration: none;
+    color: #ffffff;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 0px;
+    margin-right: 50px;
+}
+
+.form {
+    /*display: flex;*/
+    margin: 150px auto;
+    width: 300px;
+    /*justify-content: center;*/
+}
+
+.label {
+    font-size: 40px;
+    font-family: avenir;
+    font-weight: 800;
+    margin-bottom: 60px;
+}
+
+.textfield-line {
+    margin-top: 10px;
+    background-color: transparent;
+    color: #333;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #dadada 1px;
+    padding: 3px 3px;
+    width: 250px;
+    font-size: 15px;
+}
+
+.textfield-line::placeholder {
+    color: #b5b5b5;
+    font-weight: 200;
+}
+
+.input {
+    margin-bottom: 35px;
+}
+
+.button {
+    background-color: #5539f1;
+    border-radius: 100px;
+    border-color: #5539f1;
+    padding: 12px 45px;
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    display: flex;
+    margin: 80px auto 30px auto;
+}
+
+#login {
+    text-align: center;
+    text-decoration: none;
+    font-family: avenir;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.contacts_container {
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    margin: 125px auto 50px auto;
+}
+
+#contact_name {
+    font-size: 30px;
+    text-decoration: none;
+    font-family: avenir;
+    text-underline-position: none;
+    font-weight: 800;
+    color: #333333;
+}
+
+#contact_number {
+    font-size: 14px;
+    text-decoration: none;
+    font-family: avenir;
+    text-underline-position: none;
+    padding-top: 5px;
+    color: #333333;
+}
+
+.contact-info {
+    display: inline-grid;
+}
+
+.contact-list-item {
+    display: inline;
+}
+
+.contact_buttons {
+    display: block;
+}
+
+.delete_button {
+    background-color: #5539f1;
+    border-radius: 100px;
+    padding: 12px 45px;
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    display: inline;
+    margin: 10px auto;
+    border-color: #5539f1;
+}
+
+.send_button {
+    position: relative;
+    background-color: #5539f1;
+    border-radius: 100px;
+    padding: 12px 45px;
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    display: inline;
+    margin: 10px auto;
+    border-color: #5539f1;
+}
+
+.edit_button {
+    background-color: #5183e9;
+    border-radius: 100px;
+    padding: 12px 45px;
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    display: inline;
+    margin: 10px auto;
+    border-color: #5183e9;
+}
+
+.contact_name_header {
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    position: absolute;
+    font-size: 17px;
+    height: 75px;
+    right: 200px;
+}
+
+.create_message_container {
+    display: flex;
+    justify-content: center;
+    margin: 125px auto;
+    flex-direction: column;
+    width: 500px;
+}
+
+.textarea {
+    border-radius: 2px;
+    border: solid 1px #bbbbbb;
+    height: 150px;
+    font-size: 14px;
+}
+
+.message_container {
+}
+
+.message_bubble {
+    background-color: #4d2cd1;
+    padding: 5px;
+    margin: 5px;
+    font-family: avenir;
+    font-size: 14px;
+    color: white;
+    max-width: 150px;
+    overflow-wrap: break-word;
+    border-radius: 4px;
+}
+
+hr {
+    width: 100%;
+    border: solid #ffffff 0.5px;
+    margin: 5px 0px 20px 0px;
+}
+
+.add_contact_button {
+    display: flex;
+    margin: 0 auto 100px auto;
+    text-decoration: none;
+    background-color: #5539f1;
+    border-radius: 100px;
+    padding: 12px 45px;
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    display: inline;
+    border-color: #5539f1;
+    font-family: avenir;
+}
+
+.add_contact_button_container {
+    display: flex;
+    justify-content: center;
+}

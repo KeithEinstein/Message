@@ -11,16 +11,18 @@
             <a class="nav-links" href="/contacts">Contacts</a>
             <a class="nav-links" href="/users/login">Login</a>
         </nav>
-        <form class="form" action="/contacts" method="POST">
+        <form class="form" action="/:contact={{id}}" method="PUT">
+            {{#contactData}}
             <div class="input">
                 <label class="label" for="name">Name</label><br>
-                <input class="textfield-line" id="name" type="text" name="name" placeholder="Name"><br>
+                <input class="textfield-line" id="name" type="text" name="name" value={{name}}><br>
             </div>
             <div class="input">
                 <label class="label" for="phone_number">Phone Number</label><br>
-                <input class="textfield-line" id="phone_number" type="text" name="phone_number" placeholder="Phone Number"><br>
+                <input class="textfield-line" id="phone_number" type="text" name="phone_number" value={{phone_number}}><br>
             </div>
             <input class="button" type="submit" value="Add">
+            {{/contactData}}
         </form>
             <script src=“main.js”></script>
             <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>

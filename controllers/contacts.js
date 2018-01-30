@@ -25,6 +25,14 @@ router.get("/create_message", contacts.findById, (req, res, next) => {
     res.render("create_message", { contactData: res.locals.contactData });
 });
 
+router.get("/edit_contact", contacts.findById, (req, res, next) => {
+    res.render("edit_contact", { contactData: res.locals.contactData });
+});
+
+router.put("/:contact={{id}}", contacts.update, (req, res, next) => {
+    res.json(res.locals.updatedContactData);
+});
+
 router.delete("/delete", contacts.destroy, (req, res, next) => {
     res.redirect("/");
 });
