@@ -14,10 +14,10 @@ $("#edit_form").submit(function(e) {
     });
 });
 
-$("#delete").click(function(e) {
+$(".delete_button").click(function(e) {
     e.preventDefault();
 
-    const data = { id: $("#id").val() };
+    const data = { id: $(this).data("id") };
     console.log("data", data);
 
     $.ajax({
