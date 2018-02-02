@@ -211,7 +211,12 @@
     width: 100%;
     bottom: 0;
     height: 350px;
+    padding: 30px;
     background-color: #ffffff;
+    background: linear-gradient(
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 1) 15%
+    );
 }
 
 .textarea {

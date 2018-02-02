@@ -1,10 +1,11 @@
 {
   "name": "project_two",
   "version": "1.0.0",
-  "description": "![beer](http://i.imgur.com/EDTZyFL.jpg)",
+  "description": "![chat](http://i.imgur.com/EDTZyFL.jpg)",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "dotenv": "^5.0.0",
     "express": "^4.14.0",
     "morgan": "^1.9.0",
     "mustache-express": "^1.2.4",
@@ -12,10 +13,15 @@
     "pg-promise": "^5.9.7",
     "twilio": "^3.11.1"
   },
+  "engines": {
+    "node": "9.2.1"
+  },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon -e html,js,css index.js"
   },
-  "author": "",
+  "author": "Keith",
   "license": "ISC"
 }

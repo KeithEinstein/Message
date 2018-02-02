@@ -5,6 +5,12 @@ const twilio = require("twilio");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const dotenv = require("dotenv").config();
+
+const AUTH_TOKEN = process.env.AUTH_TOKEN;
+const ACCOUNT_SID = process.env.ACCOUNT_SID;
+const SERVICES = process.env.SERVICES;
+
 const mustacheExpress = require("mustache-express");
 
 app.engine("html", mustacheExpress());

@@ -6,6 +6,6 @@ const cn = {
     database: "chat"
 };
 
-const db = pgp(cn);
+const db = pgp(process.env.DATABASE_URL || cn);
 
 module.exports = db;

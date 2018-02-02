@@ -25,16 +25,6 @@ CREATE TABLE user_contacts(
     FOREIGN KEY (contact_id) REFERENCES contacts(id)
 );
 
-CREATE TABLE channels (
-    id SERIAL,
-    user_id SERIAL,
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    contact_id SERIAL,
-    FOREIGN KEY (contact_id) REFERENCES contacts(id),
-    messages_id SERIAL,
-    FOREIGN KEY (messages_id) REFERENCES messages(id)
-);
-
 CREATE TABLE messages (
   id SERIAL PRIMARY KEY,
   body VARCHAR (255),
